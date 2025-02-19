@@ -90,3 +90,4 @@ C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\ProductosAPI\obj
 C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\ProductosAPI\obj\Debug\net8.0\ProductosAPI.pdb
 C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\ProductosAPI\obj\Debug\net8.0\ProductosAPI.genruntimeconfig.cache
 C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\ProductosAPI\obj\Debug\net8.0\ref\ProductosAPI.dll
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\ProductosAPI\obj\Debug\net8.0\ProductosAPI.sourcelink.json

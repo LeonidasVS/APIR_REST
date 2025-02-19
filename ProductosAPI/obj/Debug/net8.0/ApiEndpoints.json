@@ -2,20 +2,20 @@
   {
     "ContainingType": "ProductosAPI.Controllers.ProductoController",
     "Method": "ActualizarProducto",
-    "RelativePath": "api/EditarProductos",
+    "RelativePath": "api/Actualizar",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "productos",
+        "Name": "producto",
         "Type": "APIREST.Models.Producto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "APIREST.Models.Producto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -28,7 +28,7 @@
   {
     "ContainingType": "ProductosAPI.Controllers.ProductoController",
     "Method": "Delete",
-    "RelativePath": "api/EliminarProducto",
+    "RelativePath": "api/Eliminar/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -36,22 +36,6 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ProductosAPI.Controllers.ProductoController",
-    "Method": "InsertarProducto",
-    "RelativePath": "api/InsertarProducto",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productoDTO",
-        "Type": "APIREST.Models.Producto",
         "IsRequired": true
       }
     ],
@@ -59,8 +43,34 @@
   },
   {
     "ContainingType": "ProductosAPI.Controllers.ProductoController",
+    "Method": "InsertarProducto",
+    "RelativePath": "api/Insertar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "producto",
+        "Type": "APIREST.Models.Producto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "APIREST.Models.Producto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProductosAPI.Controllers.ProductoController",
     "Method": "ObtenerListado",
-    "RelativePath": "api/LeerProductos",
+    "RelativePath": "api/Listarproducto",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -79,8 +89,8 @@
   },
   {
     "ContainingType": "ProductosAPI.Controllers.ProductoController",
-    "Method": "readProducto",
-    "RelativePath": "api/ObtenerPorId",
+    "Method": "ObtenerProducto",
+    "RelativePath": "api/Obtenerporid/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -88,9 +98,19 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "APIREST.Models.Producto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

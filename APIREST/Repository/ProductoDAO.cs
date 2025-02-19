@@ -5,38 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using APIREST.Context;
 using APIREST.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace APIREST.Repository
 {
     public class ProductoDAO
     {
-        public ApirestContext contexto = new ApirestContext();
+        private ApirestContext _contexto=new ApirestContext();
 
-        public List<Producto> SelectAll()
+        public async Task<List<Producto>> SelectAllAsync()
         {
-            var producto=contexto.Productos.ToList<Producto>();
-            return producto;
+            return await _contexto.Productos.ToListAsync();
         }
 
-        public Producto? GetById(int id)
+        public async Task<Producto?> GetByIdAsync(int id)
         {
-            return contexto.Productos.FirstOrDefault(x => x.IdProducto == id);
+            return await _contexto.Productos.FirstOrDefaultAsync(x => x.IdProducto == id);
         }
 
-
-        public bool EliminarProducto(int id)
+        public async Task<bool> DeleteProductoAsync(int id)
         {
             try
             {
-                var borrar = GetById(id);
-
-                if (borrar == null)
+                var producto = await GetByIdAsync(id);
+                if (producto == null)
                 {
                     return false;
                 }
-
-                contexto.Productos.Remove(borrar);
-                contexto.SaveChanges();
+                _contexto.Productos.Remove(producto);
+                await _contexto.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
@@ -45,13 +43,12 @@ namespace APIREST.Repository
             }
         }
 
-
-        public Producto? InsertarProducto(Producto producto)
+        public async Task<Producto?> InsertProductoAsync(Producto producto)
         {
             try
             {
-                contexto.Productos.Add(producto);
-                contexto.SaveChanges();
+                await _contexto.Productos.AddAsync(producto);
+                await _contexto.SaveChangesAsync();
                 return producto;
             }
             catch (Exception ex)
@@ -60,16 +57,33 @@ namespace APIREST.Repository
             }
         }
 
-
-        public bool updateProducto(Producto producto)
+        public async Task<bool> UpdateProductoAsync(Producto producto)
         {
             try
             {
-                contexto.Productos.Update(producto);
-                contexto.SaveChanges();
+                if (producto == null || string.IsNullOrWhiteSpace(producto.Nombre) || producto.Stock < 0 || producto.Precio <= 0)
+                {
+                    return false;
+                }
+
+                var productoExistente = await GetByIdAsync(producto.IdProducto);
+
+                if (productoExistente == null)
+                {
+                    return false;
+                }
+
+                productoExistente.Nombre = producto.Nombre;
+                productoExistente.Stock = producto.Stock;
+                productoExistente.Precio = producto.Precio;
+
+                _contexto.Productos.Update(productoExistente);
+                await _contexto.SaveChangesAsync();
                 return true;
+
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return false;
             }
         }

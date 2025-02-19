@@ -12,3 +12,4 @@ C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debu
 C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.pdb
 C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.genruntimeconfig.cache
 C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\ref\APIREST.dll
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.sourcelink.json

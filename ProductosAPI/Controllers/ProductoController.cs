@@ -11,109 +11,75 @@ namespace ProductosAPI.Controllers
     [ApiController]
     public class ProductoController : ControllerBase
     {
-        private ProductoDAO _dao=new ProductoDAO();
-
-        [HttpGet("LeerProductos")]
-        public ActionResult<List<Producto>> ObtenerListado()
+        private ProductoDAO _dao = new ProductoDAO();
+        public ProductoController(ProductoDAO dao)
         {
-            var productos = _dao.SelectAll();
+            _dao = dao;
+        }
 
-            if (productos == null || productos.Count == 0)
-            {
-                return NotFound("No se encontraron productos.");
-            }
+        [HttpGet("Listarproducto")]
+        public async Task<ActionResult<List<Producto>>> ObtenerListado()
+        {
+            var productos = await _dao.SelectAllAsync();
+            // Si no hay productos, retornamos una lista vacía  
             return Ok(productos);
         }
 
-        [HttpGet("ObtenerPorId")]
-        public ActionResult readProducto(int id)
+        [HttpGet("Obtenerporid/{id}")]
+        public async Task<ActionResult<Producto>> ObtenerProducto(int id)
         {
-            var productoleer = _dao.GetById(id);
-
-            if (productoleer == null)
+            var producto = await _dao.GetByIdAsync(id);
+            if (producto == null)
             {
                 return NotFound($"No se encontró el producto con ID {id}");
             }
-
-            return Ok(productoleer);
+            return Ok(producto);
         }
 
-        [HttpDelete("EliminarProducto")]
-        public ActionResult Delete(int id)
-        {
-            try
-            {
-                bool eliminado = _dao.EliminarProducto(id);
 
-                if (eliminado)
-                {
-                    return Ok(new { mensaje = "Producto eliminado con éxito" });
-                }
-                else
-                {
-                    return NotFound(new { mensaje = "No se encontró el producto con el ID especificado" });
-                }
-            }
-            catch (Exception ex)
+        [HttpDelete("Eliminar/{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            bool eliminado = await _dao.DeleteProductoAsync(id);
+            if (eliminado)
             {
-                return StatusCode(500, new { mensaje = "Error interno del servidor", error = ex.Message });
+                return Ok(new { mensaje = "Producto eliminado con éxito" });
             }
+            return NotFound(new { mensaje = "No se encontró el producto con el ID especificado" });
         }
 
-        [HttpPost("InsertarProducto")]
-        public ActionResult InsertarProducto([FromBody] Producto productoDTO)
+ 
+        [HttpPost("Insertar")]
+        public async Task<ActionResult<Producto>> InsertarProducto([FromBody] Producto producto)
         {
-            if (productoDTO == null || string.IsNullOrWhiteSpace(productoDTO.Nombre) || productoDTO.Stock < 0 || productoDTO.Precio <= 0)
+            if (producto == null || string.IsNullOrWhiteSpace(producto.Nombre) || producto.Stock < 0 || producto.Precio <= 0)
             {
                 return BadRequest("Datos de producto inválidos.");
             }
 
-            var nuevoProducto = new Producto
-            {
-                Nombre = productoDTO.Nombre,
-                Stock = productoDTO.Stock,
-                Precio = productoDTO.Precio
-            };
-
-            var resultado = _dao.InsertarProducto(nuevoProducto);
-
+            var resultado = await _dao.InsertProductoAsync(producto);
             if (resultado == null)
             {
                 return StatusCode(500, "Error al insertar el producto.");
             }
 
-            return CreatedAtAction(nameof(InsertarProducto), new { id = resultado.IdProducto }, resultado);
+            return CreatedAtAction(nameof(ObtenerProducto), new { id = resultado.IdProducto }, resultado);
         }
 
-        [HttpPut("EditarProductos")]
-
-        public ActionResult ActualizarProducto([FromBody] Producto productos)
+        
+        [HttpPut("Actualizar")]
+        public async Task<ActionResult<Producto>> ActualizarProducto([FromBody] Producto producto)
         {
-            if (productos==null || string.IsNullOrEmpty(productos.Nombre) || productos.Stock<0 || productos.Precio<=0)
-            {
-                return BadRequest("Datos de producto invalidos");
-            }
-
-            var productoExistentes=_dao.GetById(productos.IdProducto);
-
-            if (productoExistentes==null)
-            {
-                return NotFound("Producto no encontrado");
-            }
-
-            productoExistentes.Nombre=productos.Nombre; 
-            productoExistentes.Stock=productos.Stock;   
-            productoExistentes.Precio=productos.Precio;
-
-            var resultado = _dao.updateProducto(productoExistentes);
+            var resultado = await _dao.UpdateProductoAsync(producto);
 
             if (!resultado)
             {
-                return StatusCode(500, "Error al actualizar el producto");
+                return StatusCode(500, "Error al actualizar el producto.");
             }
 
-            return Ok(productoExistentes);
+            return Ok(producto);
         }
+
     }
 }
 
