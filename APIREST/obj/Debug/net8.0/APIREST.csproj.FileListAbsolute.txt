@@ -1,0 +1,14 @@
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\bin\Debug\net8.0\APIREST.deps.json
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\bin\Debug\net8.0\APIREST.runtimeconfig.json
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\bin\Debug\net8.0\APIREST.dll
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\bin\Debug\net8.0\APIREST.pdb
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.csproj.AssemblyReference.cache
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.AssemblyInfoInputs.cache
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.AssemblyInfo.cs
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.csproj.CoreCompileInputs.cache
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.dll
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\refint\APIREST.dll
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.pdb
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\APIREST.genruntimeconfig.cache
+C:\Users\ENVY\Documents\Programacion III\Guias_React_C#\APIREST\APIREST\obj\Debug\net8.0\ref\APIREST.dll

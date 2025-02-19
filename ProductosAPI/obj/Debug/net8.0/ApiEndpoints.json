@@ -1,0 +1,96 @@
+[
+  {
+    "ContainingType": "ProductosAPI.Controllers.ProductoController",
+    "Method": "ActualizarProducto",
+    "RelativePath": "api/EditarProductos",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productos",
+        "Type": "APIREST.Models.Producto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProductosAPI.Controllers.ProductoController",
+    "Method": "Delete",
+    "RelativePath": "api/EliminarProducto",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductosAPI.Controllers.ProductoController",
+    "Method": "InsertarProducto",
+    "RelativePath": "api/InsertarProducto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productoDTO",
+        "Type": "APIREST.Models.Producto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductosAPI.Controllers.ProductoController",
+    "Method": "ObtenerListado",
+    "RelativePath": "api/LeerProductos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[APIREST.Models.Producto, APIREST, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ProductosAPI.Controllers.ProductoController",
+    "Method": "readProducto",
+    "RelativePath": "api/ObtenerPorId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
